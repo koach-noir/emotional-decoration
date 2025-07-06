@@ -15,6 +15,17 @@
     text-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
 }
 
+/* Typewriter template: Blue typewriter style */
+.text-container[data-template="typewriter"] .text-sentence,
+.text-container[data-template="typewriter"] .text-char,
+.text-container[data-template="typewriter"] .typewriter-sentence,
+.text-container[data-template="typewriter"] .typewriter-char,
+.typewriter-container .typewriter-sentence,
+.typewriter-container .typewriter-char {
+    color: #4dd2ff !important;
+    text-shadow: 0 0 10px rgba(77, 210, 255, 0.3);
+}
+
 /* Enhanced visibility during active display */
 .text-container .text-line.fade-in,
 .text-container .text-line.static {
