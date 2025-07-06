@@ -1,0 +1,195 @@
+/*
+ * ScrollCast Text Color Enhancement
+ * emotional-decoration system for unified template selectors
+ * 
+ * Compatible with Template-Based Architecture:
+ * - .text-container[data-template="railway"] 
+ * - .text-container[data-template="scroll"]
+ * - .text-line elements
+ */
+
+/* =================================================================
+ * COMMON TEXT COLOR ENHANCEMENTS
+ * ================================================================= */
+
+/* Base text color enhancement for all templates */
+.text-container .text-line {
+    /* CSS Override Architecture: additive decoration only */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* =================================================================
+ * RAILWAY TEMPLATE ENHANCEMENTS
+ * ================================================================= */
+
+/* Railway template: Station announcement style colors */
+.text-container[data-template="railway"] .text-line {
+    color: #00ff88; /* JR East green */
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+}
+
+/* Railway active line highlighting */
+.text-container[data-template="railway"] .text-line.fade-in,
+.text-container[data-template="railway"] .text-line.static {
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(0, 255, 136, 0.8),
+                 0 0 20px rgba(0, 255, 136, 0.4);
+}
+
+/* Railway fade-out state */
+.text-container[data-template="railway"] .text-line.fade-out {
+    color: #88ffaa;
+    text-shadow: 0 0 6px rgba(136, 255, 170, 0.3);
+}
+
+/* =================================================================
+ * SCROLL TEMPLATE ENHANCEMENTS  
+ * ================================================================= */
+
+/* Scroll template: Movie credits style colors */
+.text-container[data-template="scroll"] .text-line {
+    color: #ffd700; /* Golden yellow */
+    text-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+}
+
+/* Enhanced visibility during scroll animation */
+.text-container[data-template="scroll"] .text-line:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6),
+                 0 0 16px rgba(255, 215, 0, 0.3);
+}
+
+/* =================================================================
+ * EMOTIONAL ENHANCEMENT LAYERS
+ * ================================================================= */
+
+/* Positive emotion enhancement */
+.text-container[data-emotion="positive"] .text-line {
+    color: #66ff66; /* Bright green */
+    text-shadow: 0 0 8px rgba(102, 255, 102, 0.4);
+}
+
+/* Negative emotion enhancement */
+.text-container[data-emotion="negative"] .text-line {
+    color: #ff6666; /* Soft red */
+    text-shadow: 0 0 8px rgba(255, 102, 102, 0.4);
+}
+
+/* Neutral emotion enhancement */
+.text-container[data-emotion="neutral"] .text-line {
+    color: #cccccc; /* Light gray */
+    text-shadow: 0 0 6px rgba(204, 204, 204, 0.3);
+}
+
+/* Excited emotion enhancement */
+.text-container[data-emotion="excited"] .text-line {
+    color: #ff9933; /* Orange */
+    text-shadow: 0 0 10px rgba(255, 153, 51, 0.5);
+    animation: excited-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes excited-pulse {
+    from {
+        text-shadow: 0 0 10px rgba(255, 153, 51, 0.5);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(255, 153, 51, 0.8),
+                     0 0 25px rgba(255, 153, 51, 0.4);
+    }
+}
+
+/* =================================================================
+ * CONTENT-BASED COLOR VARIATIONS
+ * ================================================================= */
+
+/* Technology-related content */
+.text-container .text-line[data-content*="technology"],
+.text-container .text-line[data-content*="artificial"],
+.text-container .text-line[data-content*="intelligence"] {
+    color: #00ccff; /* Cyan blue */
+    text-shadow: 0 0 8px rgba(0, 204, 255, 0.4);
+}
+
+/* Music-related content */
+.text-container .text-line[data-content*="music"],
+.text-container .text-line[data-content*="jazz"],
+.text-container .text-line[data-content*="rock"] {
+    color: #ff6699; /* Pink */
+    text-shadow: 0 0 8px rgba(255, 102, 153, 0.4);
+}
+
+/* Nature-related content */
+.text-container .text-line[data-content*="weather"],
+.text-container .text-line[data-content*="park"],
+.text-container .text-line[data-content*="beautiful"] {
+    color: #99ff99; /* Light green */
+    text-shadow: 0 0 8px rgba(153, 255, 153, 0.4);
+}
+
+/* =================================================================
+ * LINE INDEX-BASED ENHANCEMENTS
+ * ================================================================= */
+
+/* Gradual color progression for railway */
+.text-container[data-template="railway"] .text-line[data-line="0"],
+.text-container[data-template="railway"] .text-line[data-line="1"],
+.text-container[data-template="railway"] .text-line[data-line="2"] {
+    color: #88ff88; /* Early lines: light green */
+}
+
+.text-container[data-template="railway"] .text-line[data-line*="1"],
+.text-container[data-template="railway"] .text-line[data-line*="2"] {
+    color: #aaffaa; /* Mid lines: lighter green */
+}
+
+/* Scroll template color progression */
+.text-container[data-template="scroll"] .text-line:nth-child(odd) {
+    color: #ffd700; /* Gold */
+}
+
+.text-container[data-template="scroll"] .text-line:nth-child(even) {
+    color: #ffeb99; /* Light gold */
+}
+
+/* =================================================================
+ * ACCESSIBILITY & FALLBACKS
+ * ================================================================= */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .text-container .text-line {
+        color: #ffffff !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .text-container .text-line {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    .text-container .text-line {
+        color: #000000 !important;
+        text-shadow: none !important;
+    }
+}
+
+/* =================================================================
+ * NON-INTERFERENCE DESIGN NOTES
+ * ================================================================= */
+
+/*
+ * This CSS follows the "お互いの生成物は干渉しない設計" principle:
+ * 
+ * 1. Only affects color and text-shadow properties
+ * 2. Preserves all scroll-cast animation properties  
+ * 3. Uses CSS Override Architecture patterns
+ * 4. Targets unified common selectors (.text-container, .text-line)
+ * 5. Does not modify layout, positioning, or core animations
+ * 6. Provides additive enhancement only
+ */

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScrollCast + Emotional Decoration Integration Demo</title>
+    
+    <!-- Base ScrollCast Styles (simulated) -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        h1, h2 {
+            color: #00ff88;
+            text-align: center;
+        }
+        
+        .demo-section {
+            margin: 40px 0;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+        
+        /* Simulated ScrollCast Template Structure */
+        .text-container {
+            position: relative;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px dashed #444;
+            border-radius: 4px;
+        }
+        
+        .text-line {
+            display: block;
+            margin: 8px 0;
+            padding: 4px 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        /* Railway template base styles */
+        .text-container[data-template="railway"] {
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        /* Scroll template base styles */
+        .text-container[data-template="scroll"] {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Animation state classes (simulated) */
+        .text-line.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .text-line.static {
+            opacity: 1;
+        }
+        
+        .text-line.fade-out {
+            opacity: 0.3;
+        }
+        
+        .toggle-button {
+            background: #00ff88;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        
+        .status {
+            text-align: center;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        
+        .enhancement-off .text-container .text-line {
+            color: #ffffff !important;
+            text-shadow: none !important;
+        }
+    </style>
+    
+    <!-- Emotional Decoration CSS Enhancement -->
+    <link rel="stylesheet" href="../css/text-color-simple.css" id="emo-deco-css">
+</head>
+<body>
+    <h1>ScrollCast + Emotional Decoration Integration Demo</h1>
+    
+    <div class="status">
+        Enhancement Status: <span id="status">ENABLED</span>
+        <button class="toggle-button" onclick="toggleEnhancement()">Toggle Enhancement</button>
+    </div>
+    
+    <div class="demo-section">
+        <h2>Railway Template with Emotional Enhancement</h2>
+        <div class="text-container" data-template="railway">
+            <div class="text-line fade-in" data-line="0">Today is a beautiful day.</div>
+            <div class="text-line static" data-line="1">I went for a walk in the park.</div>
+            <div class="text-line fade-out" data-line="2">The weather was perfect for outdoor activities.</div>
+            <div class="text-line" data-line="3">Technology keeps advancing rapidly.</div>
+            <div class="text-line" data-line="4">Artificial intelligence is becoming more sophisticated.</div>
+        </div>
+    </div>
+    
+    <div class="demo-section">
+        <h2>Scroll Template with Emotional Enhancement</h2>
+        <div class="text-container" data-template="scroll">
+            <div class="text-line" data-line="0">Today is a beautiful day.</div>
+            <div class="text-line" data-line="1">I went for a walk in the park.</div>
+            <div class="text-line fade-in" data-line="2">The weather was perfect for outdoor activities.</div>
+            <div class="text-line static" data-line="3">Tomorrow is expected to be rainy.</div>
+            <div class="text-line" data-line="4">I plan to stay home and read a good book.</div>
+            <div class="text-line" data-line="5">Music has always been part of human culture.</div>
+            <div class="text-line" data-line="6">Jazz is known for its improvisation and creativity.</div>
+        </div>
+    </div>
+    
+    <div class="demo-section">
+        <h2>Emotional Layers (Advanced)</h2>
+        <div class="text-container" data-template="railway" data-emotion="positive">
+            <div class="text-line static">Books transport us to different worlds.</div>
+            <div class="text-line fade-in">Fiction lets our imagination run wild.</div>
+        </div>
+        
+        <div class="text-container" data-template="scroll" data-emotion="excited">
+            <div class="text-line static">Learning a new language opens many doors.</div>
+            <div class="text-line fade-in">Career opportunities expand significantly.</div>
+        </div>
+    </div>
+    
+    <div class="demo-section">
+        <h2>Implementation Notes</h2>
+        <ul style="color: #ccc; max-width: 800px;">
+            <li><strong>Non-interference Design:</strong> Only affects color and text-shadow properties</li>
+            <li><strong>Template Compatibility:</strong> Works with both railway and scroll templates</li>
+            <li><strong>Common Selectors:</strong> Targets unified .text-container and .text-line structure</li>
+            <li><strong>CSS Override Architecture:</strong> Additive enhancement only, preserves all animations</li>
+            <li><strong>Performance:</strong> Minimal CSS impact, no JavaScript required</li>
+        </ul>
+    </div>
+    
+    <script>
+        let enhancementEnabled = true;
+        
+        function toggleEnhancement() {
+            const link = document.getElementById('emo-deco-css');
+            const status = document.getElementById('status');
+            const body = document.body;
+            
+            if (enhancementEnabled) {
+                body.classList.add('enhancement-off');
+                status.textContent = 'DISABLED';
+                status.style.color = '#ff6666';
+            } else {
+                body.classList.remove('enhancement-off');
+                status.textContent = 'ENABLED';
+                status.style.color = '#00ff88';
+            }
+            
+            enhancementEnabled = !enhancementEnabled;
+        }
+    </script>
+</body>
+</html>

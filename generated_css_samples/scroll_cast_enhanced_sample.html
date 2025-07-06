@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScrollCast - TypeWriter Effect (Plugin)</title>
+    <!-- ScrollCast Shared Styles -->
+    <link rel="stylesheet" href="shared/scrollcast-styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            height: 100vh;
+            overflow: hidden;
+            user-select: none;
+            cursor: pointer;
+        }
+        
+        .typewriter-container {
+            font-size: 3.7vw;
+            font-family: Arial, sans-serif;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            line-height: 1.4;
+        }
+        
+        @media (min-width: 768px) {
+            .typewriter-container {
+                font-size: 40px;
+                max-width: 600px;
+            }
+        }
+    </style>
+    <!-- Emotional Decoration Enhancement -->
+    <link rel="stylesheet" href="learning_focused_typewriter.css">
+</head>
+<body>
+    <div class="typewriter-container">
+        <div class="typewriter-sentence" data-sentence="0">
+            <span class="typewriter-char decoration-enhanced" data-char-index="0" id="char-0">T</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="1" id="char-1">o</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="2" id="char-2">d</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="3" id="char-3">a</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="4" id="char-4">y</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="5" id="char-5"> </span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="6" id="char-6">i</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="7" id="char-7">s</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="8" id="char-8"> </span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="9" id="char-9">a</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="10" id="char-10"> </span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="11" id="char-11">b</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="12" id="char-12">e</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="13" id="char-13">a</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="14" id="char-14">u</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="15" id="char-15">t</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="16" id="char-16">i</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="17" id="char-17">f</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="18" id="char-18">u</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="19" id="char-19">l</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="20" id="char-20"> </span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="21" id="char-21">d</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="22" id="char-22">a</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="23" id="char-23">y</span>
+            <span class="typewriter-char decoration-enhanced" data-char-index="24" id="char-24">.</span>
+        </div>
+    </div>
+    <script src="shared/scrollcast-core.js"></script>
+</body>
+</html>

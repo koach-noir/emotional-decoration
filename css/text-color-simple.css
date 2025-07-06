@@ -1,0 +1,23 @@
+/*
+ * Simplified Text Color Enhancement for ScrollCast Templates
+ * Compatible with Template-Based Architecture common selectors
+ */
+
+/* Railway template: Green station display style */
+.text-container[data-template="railway"] .text-line {
+    color: #00ff88;
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+}
+
+/* Scroll template: Golden movie credits style */
+.text-container[data-template="scroll"] .text-line {
+    color: #ffd700;
+    text-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+}
+
+/* Enhanced visibility during active display */
+.text-container .text-line.fade-in,
+.text-container .text-line.static {
+    color: #ffffff;
+    text-shadow: 0 0 12px currentColor;
+}

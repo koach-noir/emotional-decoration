@@ -1,0 +1,49 @@
+{
+  "name": "Learning Focused",
+  "description": "Blue-green gradient theme optimized for educational content",
+  "version": "1.0.0",
+  "compatibility": {
+    "scroll_cast_templates": [
+      "typewriter",
+      "railway",
+      "scroll"
+    ],
+    "css_override_architecture": true,
+    "non_interference_design": true
+  },
+  "css_variables": [
+    "--decoration-primary-start",
+    "--decoration-primary-end",
+    "--decoration-bg-start",
+    "--decoration-bg-end",
+    "--decoration-accent-color",
+    "--decoration-glow-color",
+    "--decoration-glow-intensity",
+    "--decoration-glow-radius",
+    "--decoration-animation-duration"
+  ],
+  "css_selectors": [
+    ".typewriter-char",
+    ".typewriter-container",
+    ".typewriter-sentence",
+    ".decoration-enhanced"
+  ],
+  "integration_points": {
+    "css_import": "Add CSS link after scroll-cast styles",
+    "class_enhancement": "Add .decoration-enhanced to elements",
+    "no_html_modification": "Works with existing HTML structure"
+  },
+  "scroll_cast_integration": {
+    "preserved_classes": [
+      ".typewriter-char (opacity, transition, display)",
+      ".typewriter-container (position, transform)",
+      ".typewriter-sentence (display, active states)"
+    ],
+    "enhanced_properties": [
+      "background (gradient text)",
+      "filter (glow effects)",
+      "animation (decoration enhancements)"
+    ],
+    "css_override_safe": true
+  }
+}

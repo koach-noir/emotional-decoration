@@ -1,0 +1,50 @@
+name: "Professional Positive"
+description: "Uplifting teal-cyan theme for positive business content with optimistic, forward-thinking visuals"
+category: "professional"
+business_level: "modern"
+
+colors:
+  primary_start: "#00B894"  # Success teal
+  primary_end: "#00CEC9"    # Bright cyan
+  background_start: "#DDD6FE"  # Light purple
+  background_end: "#E0E7FF"    # Very light blue
+  accent_color: "#0984E3"      # Confident blue
+  glow_color: "#00B894"        # Teal glow
+
+effects:
+  glow_intensity: 0.4
+  animation_speed: 0.9    # Moderate
+  blur_radius: 0.5
+  pulse_enabled: false    # Professional restraint
+  gradient_angle: 45      # Dynamic angle
+  shadow_enabled: true
+  shadow_intensity: 0.5
+
+typography:
+  font_weight: "500"
+  letter_spacing: "0.01em"
+  line_height: "1.7"
+  text_transform: "none"
+
+compatibility:
+  - "typewriter"
+  - "railway"
+  - "scroll"
+
+features:
+  optimism_conveying: true
+  success_oriented: true
+  innovation_suggesting: true
+  confidence_building: true
+
+target_audience:
+  - "startup_companies"
+  - "positive_business_news"
+  - "success_stories"
+  - "growth_content"
+
+use_cases:
+  - "company_achievements"
+  - "positive_announcements"
+  - "growth_presentations"
+  - "success_celebrations"

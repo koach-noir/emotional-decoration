@@ -1,0 +1,50 @@
+name: "Professional Minimal"
+description: "Clean gray-blue theme for business content with sophisticated, minimal aesthetics"
+category: "professional"
+business_level: "corporate"
+
+colors:
+  primary_start: "#2F3542"  # Dark navy
+  primary_end: "#57606F"    # Steel gray
+  background_start: "#F8F9FA"  # Light gray
+  background_end: "#E9ECEF"    # Lighter gray
+  accent_color: "#3742FA"      # Professional blue
+  glow_color: "#2F3542"        # Dark navy glow
+
+effects:
+  glow_intensity: 0.2     # Subtle
+  animation_speed: 0.7    # Conservative
+  blur_radius: 0.0        # Sharp and clean
+  pulse_enabled: false    # No distractions
+  gradient_angle: 0       # Clean horizontal
+  shadow_enabled: true
+  shadow_intensity: 0.3
+
+typography:
+  font_weight: "500"      # Professional weight
+  letter_spacing: "0.01em"
+  line_height: "1.6"
+  text_transform: "none"
+
+compatibility:
+  - "typewriter"
+  - "railway"
+  - "scroll"
+
+features:
+  professionalism_high: true
+  distraction_minimal: true
+  readability_optimized: true
+  authority_conveying: true
+
+target_audience:
+  - "business_professionals"
+  - "corporate_communications"
+  - "formal_presentations"
+  - "official_documents"
+
+use_cases:
+  - "business_presentations"
+  - "corporate_videos"
+  - "professional_training"
+  - "formal_announcements"

@@ -1,0 +1,49 @@
+name: "Emotional Serene"
+description: "Calming cyan-blue theme for peaceful emotional content with tranquil, soothing visuals"
+category: "emotional"
+emotion_target: "calm"
+
+colors:
+  primary_start: "#81ECEC"  # Soft cyan
+  primary_end: "#74B9FF"    # Sky blue
+  background_start: "#2D3436"  # Charcoal
+  background_end: "#636E72"    # Gray blue
+  accent_color: "#00B894"      # Emerald
+  glow_color: "#81ECEC"        # Cyan glow
+
+effects:
+  glow_intensity: 0.3
+  animation_speed: 0.7    # Slower for calm
+  blur_radius: 0.8
+  pulse_enabled: false    # No agitation
+  gradient_angle: 0       # Horizontal calm
+  shadow_enabled: true
+  shadow_intensity: 0.4
+
+typography:
+  font_weight: "300"      # Light and airy
+  letter_spacing: "0.02em"
+  line_height: "1.8"      # Spacious
+  text_transform: "none"
+
+compatibility:
+  - "typewriter"
+  - "scroll"
+
+features:
+  tranquility_inducing: true
+  stress_reducing: true
+  peace_conveying: true
+  mindfulness_supporting: true
+
+target_audience:
+  - "meditation_content"
+  - "wellness_materials"
+  - "therapeutic_text"
+  - "mindfulness_practice"
+
+use_cases:
+  - "meditation_guidance"
+  - "wellness_content"
+  - "therapeutic_materials"
+  - "peaceful_narratives"

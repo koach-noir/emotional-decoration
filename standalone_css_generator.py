@@ -1,0 +1,454 @@
+#!/usr/bin/env python3
+"""
+Standalone CSS generator for emotional-decoration.
+Bypasses dependency issues by directly importing only working components.
+"""
+
+import sys
+import json
+from pathlib import Path
+from typing import Dict, Any
+
+# Add src to path for direct imports
+sys.path.insert(0, str(Path(__file__).parent / "src"))
+
+# Direct imports of working components only
+from emotional_decoration.models import ColorScheme, VisualEffect, ThemeConfig
+
+class StandaloneCSSGenerator:
+    """Standalone CSS generator without problematic dependencies."""
+    
+    def __init__(self):
+        self.css_templates = self._initialize_css_templates()
+        
+    def generate_learning_focused_theme(self) -> ThemeConfig:
+        """Generate learning focused theme configuration."""
+        colors = ColorScheme(
+            primary_start="#4A90E2",
+            primary_end="#7ED321", 
+            background_start="#000428",
+            background_end="#004e92",
+            accent_color="#50E3C2",
+            glow_color="#4A90E2"
+        )
+        
+        effects = VisualEffect(
+            glow_intensity=0.3,
+            animation_speed=0.8,
+            pulse_enabled=False,
+            gradient_angle=45,
+            blur_radius=2.0,
+            shadow_intensity=0.4
+        )
+        
+        return ThemeConfig(
+            name="Learning Focused",
+            description="Blue-green gradient theme optimized for educational content",
+            colors=colors,
+            effects=effects,
+            typography={
+                "font_weight": "500",
+                "letter_spacing": "0.01em",
+                "line_height": "1.6"
+            },
+            compatibility=["typewriter", "railway", "scroll"]
+        )
+    
+    def generate_css_for_theme(self, theme_config: ThemeConfig, template_type: str = "typewriter") -> str:
+        """Generate CSS for the given theme configuration."""
+        css_parts = []
+        
+        # Add CSS header with metadata
+        css_parts.append(self._generate_css_header(theme_config))
+        
+        # Add CSS custom properties (variables)
+        css_parts.append(self._generate_css_variables(theme_config))
+        
+        # Add base decoration styles
+        css_parts.append(self._generate_base_decoration_styles(theme_config))
+        
+        # Add template-specific styles
+        css_parts.append(self._generate_template_styles(theme_config, template_type))
+        
+        # Add animation styles
+        css_parts.append(self._generate_animation_styles(theme_config))
+        
+        # Add responsive styles
+        css_parts.append(self._generate_responsive_styles(theme_config))
+        
+        # Add accessibility styles
+        css_parts.append(self._generate_accessibility_styles(theme_config))
+        
+        return "\n\n".join(css_parts)
+    
+    def _initialize_css_templates(self) -> Dict[str, str]:
+        """Initialize CSS templates for different components."""
+        return {
+            "typewriter": """
+/* Typewriter Template Decoration */
+.typewriter-char {
+    /* Core functionality preserved from scroll-cast */
+    /* opacity, transition, display are controlled by scroll-cast */
+    
+    /* Decoration enhancements */
+    background: linear-gradient(var(--decoration-gradient-angle), var(--decoration-primary-start), var(--decoration-primary-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    /* Glow effect */
+    filter: drop-shadow(0 0 var(--decoration-glow-radius) var(--decoration-glow-color));
+    
+    /* Animation enhancement */
+    animation: decorationEnhance var(--decoration-animation-duration) ease-in-out;
+}
+
+.typewriter-char.decoration-enhanced {
+    /* Additional styling when decoration is active */
+    position: relative;
+    z-index: 1;
+}
+
+.typewriter-char.decoration-enhanced::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--decoration-accent-color);
+    opacity: var(--decoration-glow-intensity);
+    border-radius: 2px;
+    z-index: -1;
+    filter: blur(var(--decoration-blur-radius));
+}
+
+.typewriter-container {
+    /* Container decoration */
+    background: linear-gradient(var(--decoration-bg-angle), var(--decoration-bg-start), var(--decoration-bg-end));
+    padding: var(--decoration-container-padding);
+    border-radius: var(--decoration-border-radius);
+}
+
+.typewriter-sentence {
+    /* Sentence-level decoration */
+    position: relative;
+    margin: var(--decoration-sentence-margin);
+}
+"""
+        }
+    
+    def _generate_css_header(self, theme_config: ThemeConfig) -> str:
+        """Generate CSS header with metadata."""
+        return f"""/*
+ * Emotional Decoration Theme: {theme_config.name}
+ * Description: {theme_config.description}
+ * Compatible with: {', '.join(theme_config.compatibility)}
+ * 
+ * This CSS enhances scroll-cast animations without breaking core functionality.
+ * Generated by emotional-decoration system.
+ */"""
+    
+    def _generate_css_variables(self, theme_config: ThemeConfig) -> str:
+        """Generate CSS custom properties for theme customization."""
+        colors = theme_config.colors
+        effects = theme_config.effects
+        
+        return f""":root {{
+    /* Color Variables */
+    --decoration-primary-start: {colors.primary_start};
+    --decoration-primary-end: {colors.primary_end};
+    --decoration-bg-start: {colors.background_start};
+    --decoration-bg-end: {colors.background_end};
+    --decoration-accent-color: {colors.accent_color};
+    --decoration-glow-color: {colors.glow_color};
+    
+    /* Effect Variables */
+    --decoration-glow-intensity: {effects.glow_intensity};
+    --decoration-glow-radius: {effects.glow_intensity * 8}px;
+    --decoration-animation-duration: {1 / effects.animation_speed}s;
+    --decoration-blur-radius: {effects.blur_radius}px;
+    --decoration-gradient-angle: {effects.gradient_angle}deg;
+    --decoration-bg-angle: {effects.gradient_angle + 45}deg;
+    --decoration-shadow-intensity: {effects.shadow_intensity};
+    
+    /* Layout Variables */
+    --decoration-container-padding: {max(10, effects.glow_intensity * 20)}px;
+    --decoration-border-radius: {effects.blur_radius * 2}px;
+    --decoration-sentence-margin: {effects.glow_intensity * 5}px 0;
+    
+    /* Typography Variables */
+    --decoration-font-weight: {theme_config.typography.get('font_weight', 'normal')};
+    --decoration-letter-spacing: {theme_config.typography.get('letter_spacing', 'normal')};
+    --decoration-line-height: {theme_config.typography.get('line_height', '1.6')};
+    --decoration-text-transform: {theme_config.typography.get('text_transform', 'none')};
+}}"""
+    
+    def _generate_base_decoration_styles(self, theme_config: ThemeConfig) -> str:
+        """Generate base decoration styles."""
+        return """
+/* Base Decoration Styles */
+.decoration-enhanced {
+    /* Common decoration enhancements */
+    font-weight: var(--decoration-font-weight);
+    letter-spacing: var(--decoration-letter-spacing);
+    line-height: var(--decoration-line-height);
+    text-transform: var(--decoration-text-transform);
+    
+    /* Smooth transitions */
+    transition: all 0.3s ease-in-out;
+    
+    /* Hardware acceleration */
+    transform: translateZ(0);
+    will-change: transform, opacity, filter;
+}
+
+.decoration-enhanced:hover {
+    /* Hover effects */
+    filter: brightness(1.1) contrast(1.05);
+    transform: translateZ(0) scale(1.02);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .decoration-enhanced {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .decoration-enhanced:hover {
+        transform: none !important;
+    }
+}"""
+    
+    def _generate_template_styles(self, theme_config: ThemeConfig, template_type: str) -> str:
+        """Generate template-specific styles."""
+        template_css = self.css_templates.get(template_type, self.css_templates["typewriter"])
+        
+        # Add pulse animation if enabled
+        if theme_config.effects.pulse_enabled:
+            pulse_animation = self._generate_pulse_animation(theme_config)
+            template_css += "\n\n" + pulse_animation
+        
+        return template_css
+    
+    def _generate_animation_styles(self, theme_config: ThemeConfig) -> str:
+        """Generate animation keyframes."""
+        animations = []
+        
+        # Base decoration animation
+        animations.append(f"""
+@keyframes decorationEnhance {{
+    0% {{
+        filter: drop-shadow(0 0 0 transparent);
+        transform: scale(1);
+    }}
+    50% {{
+        filter: drop-shadow(0 0 var(--decoration-glow-radius) var(--decoration-glow-color));
+        transform: scale(1.01);
+    }}
+    100% {{
+        filter: drop-shadow(0 0 var(--decoration-glow-radius) var(--decoration-glow-color));
+        transform: scale(1);
+    }}
+}}""")
+        
+        return "\n\n".join(animations)
+    
+    def _generate_pulse_animation(self, theme_config: ThemeConfig) -> str:
+        """Generate pulse animation styles."""
+        return f"""
+/* Pulse Animation */
+@keyframes decorationPulse {{
+    0%, 100% {{
+        filter: drop-shadow(0 0 var(--decoration-glow-radius) var(--decoration-glow-color));
+    }}
+    50% {{
+        filter: drop-shadow(0 0 calc(var(--decoration-glow-radius) * 1.5) var(--decoration-glow-color)) brightness(1.1);
+    }}
+}}
+
+.decoration-enhanced.pulse-enabled {{
+    animation: decorationPulse calc(var(--decoration-animation-duration) * 2) ease-in-out infinite;
+}}"""
+    
+    def _generate_responsive_styles(self, theme_config: ThemeConfig) -> str:
+        """Generate responsive styles for different screen sizes."""
+        return """
+/* Responsive Styles */
+@media (max-width: 768px) {
+    :root {
+        --decoration-glow-radius: calc(var(--decoration-glow-radius) * 0.8);
+        --decoration-container-padding: calc(var(--decoration-container-padding) * 0.8);
+    }
+    
+    .decoration-enhanced {
+        /* Reduced effects on mobile */
+        filter: none !important;
+        transform: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --decoration-glow-radius: calc(var(--decoration-glow-radius) * 0.6);
+        --decoration-container-padding: calc(var(--decoration-container-padding) * 0.6);
+    }
+}
+
+@media (min-width: 1200px) {
+    :root {
+        --decoration-glow-radius: calc(var(--decoration-glow-radius) * 1.2);
+        --decoration-container-padding: calc(var(--decoration-container-padding) * 1.2);
+    }
+}"""
+    
+    def _generate_accessibility_styles(self, theme_config: ThemeConfig) -> str:
+        """Generate accessibility-friendly styles."""
+        return """
+/* Accessibility Styles */
+@media (prefers-contrast: high) {
+    :root {
+        --decoration-glow-intensity: 0.8;
+        --decoration-shadow-intensity: 0.9;
+    }
+    
+    .decoration-enhanced {
+        /* Higher contrast for accessibility */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+}
+
+@media (prefers-contrast: low) {
+    :root {
+        --decoration-glow-intensity: 0.3;
+        --decoration-shadow-intensity: 0.3;
+    }
+}
+
+/* Focus styles for keyboard navigation */
+.decoration-enhanced:focus {
+    outline: 2px solid var(--decoration-accent-color);
+    outline-offset: 2px;
+    border-radius: var(--decoration-border-radius);
+}
+
+/* High contrast mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --decoration-bg-start: #1a1a1a;
+        --decoration-bg-end: #2d2d2d;
+    }
+}"""
+    
+    def minify_css(self, css: str) -> str:
+        """Minify CSS by removing unnecessary whitespace and comments."""
+        import re
+        
+        # Remove comments
+        css = re.sub(r'/\*.*?\*/', '', css, flags=re.DOTALL)
+        
+        # Remove extra whitespace
+        css = re.sub(r'\s+', ' ', css)
+        
+        # Remove whitespace around specific characters
+        css = re.sub(r'\s*([{}:;,])\s*', r'\1', css)
+        
+        # Remove trailing semicolons before closing braces
+        css = re.sub(r';\s*}', '}', css)
+        
+        return css.strip()
+    
+    def generate_integration_manifest(self, theme_config: ThemeConfig) -> Dict[str, Any]:
+        """Generate integration manifest for scroll-cast."""
+        return {
+            "name": theme_config.name,
+            "description": theme_config.description,
+            "version": "1.0.0",
+            "compatibility": {
+                "scroll_cast_templates": theme_config.compatibility,
+                "css_override_architecture": True,
+                "non_interference_design": True
+            },
+            "css_variables": [
+                "--decoration-primary-start",
+                "--decoration-primary-end", 
+                "--decoration-bg-start",
+                "--decoration-bg-end",
+                "--decoration-accent-color",
+                "--decoration-glow-color",
+                "--decoration-glow-intensity",
+                "--decoration-glow-radius",
+                "--decoration-animation-duration"
+            ],
+            "css_selectors": [
+                ".typewriter-char",
+                ".typewriter-container",
+                ".typewriter-sentence",
+                ".decoration-enhanced"
+            ],
+            "integration_points": {
+                "css_import": "Add CSS link after scroll-cast styles",
+                "class_enhancement": "Add .decoration-enhanced to elements",
+                "no_html_modification": "Works with existing HTML structure"
+            }
+        }
+
+
+def main():
+    """Generate CSS files for scroll-cast integration."""
+    print("🎨 EMOTIONAL-DECORATION STANDALONE CSS GENERATOR")
+    print("=" * 50)
+    
+    # Create generator
+    generator = StandaloneCSSGenerator()
+    
+    # Generate theme
+    theme = generator.generate_learning_focused_theme()
+    print(f"📋 Generated theme: {theme.name}")
+    
+    # Generate CSS for typewriter template
+    css_content = generator.generate_css_for_theme(theme, "typewriter")
+    minified_css = generator.minify_css(css_content)
+    
+    # Create output directory
+    output_dir = Path("css_output")
+    output_dir.mkdir(exist_ok=True)
+    
+    # Save CSS files
+    css_file = output_dir / "learning_focused_typewriter.css"
+    min_file = output_dir / "learning_focused_typewriter.min.css"
+    manifest_file = output_dir / "learning_focused_manifest.json"
+    
+    css_file.write_text(css_content, encoding='utf-8')
+    min_file.write_text(minified_css, encoding='utf-8')
+    
+    # Generate and save manifest
+    manifest = generator.generate_integration_manifest(theme)
+    manifest_file.write_text(json.dumps(manifest, indent=2), encoding='utf-8')
+    
+    # Stats
+    css_size = len(css_content)
+    min_size = len(minified_css)
+    css_rules = css_content.count('{')
+    css_vars = css_content.count('--decoration-')
+    
+    print(f"✅ Generated files:")
+    print(f"   📄 {css_file.name} - {css_size:,} bytes, {css_rules} rules, {css_vars} variables")
+    print(f"   📄 {min_file.name} - {min_size:,} bytes (minified)")
+    print(f"   📄 {manifest_file.name} - Integration manifest")
+    print(f"   📁 Output directory: {output_dir}")
+    
+    return output_dir, [css_file, min_file, manifest_file]
+
+
+if __name__ == "__main__":
+    try:
+        output_dir, files = main()
+        print(f"\n🎉 Success! Files ready for scroll-cast integration.")
+        print(f"   Next: Copy CSS to contents/html/shared/ and add import to HTML")
+    except Exception as e:
+        print(f"❌ Generation failed: {e}")
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)

@@ -1,0 +1,50 @@
+name: "Learning Energetic"
+description: "Vibrant coral-teal theme for engaging educational content with high energy and motivation"
+category: "learning"
+difficulty_target: "easy"
+
+colors:
+  primary_start: "#FF6B6B"  # Energetic coral
+  primary_end: "#4ECDC4"    # Vibrant teal
+  background_start: "#134E5E"  # Dark teal
+  background_end: "#71B280"    # Forest green
+  accent_color: "#45B7D1"      # Sky blue
+  glow_color: "#FF6B6B"        # Coral glow
+
+effects:
+  glow_intensity: 0.5
+  animation_speed: 1.0    # Normal speed
+  blur_radius: 1.0
+  pulse_enabled: true     # Engaging
+  gradient_angle: 90
+  shadow_enabled: true
+  shadow_intensity: 0.6
+
+typography:
+  font_weight: "400"
+  letter_spacing: "0.01em"
+  line_height: "1.7"
+  text_transform: "none"
+
+compatibility:
+  - "typewriter"
+  - "railway"
+  - "scroll"
+
+features:
+  motivation_boost: true
+  engagement_high: true
+  energy_positive: true
+  attention_grabbing: true
+
+target_audience:
+  - "young_learners"
+  - "interactive_content"
+  - "gamified_learning"
+  - "motivation_content"
+
+use_cases:
+  - "children_education"
+  - "interactive_tutorials"
+  - "motivational_content"
+  - "celebration_achievements"

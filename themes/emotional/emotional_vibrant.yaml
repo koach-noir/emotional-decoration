@@ -1,0 +1,50 @@
+name: "Emotional Vibrant"
+description: "Dynamic coral-gold theme for expressive emotional content with warm, engaging visuals"
+category: "emotional"
+emotion_target: "happy"
+
+colors:
+  primary_start: "#FF7675"  # Warm coral
+  primary_end: "#FDCB6E"    # Golden yellow
+  background_start: "#6C5CE7"  # Deep purple
+  background_end: "#A29BFE"    # Light purple
+  accent_color: "#FD79A8"      # Pink accent
+  glow_color: "#FF7675"        # Coral glow
+
+effects:
+  glow_intensity: 0.6
+  animation_speed: 1.2    # Faster for energy
+  blur_radius: 1.5
+  pulse_enabled: true     # Emotional expression
+  gradient_angle: 135
+  shadow_enabled: true
+  shadow_intensity: 0.7
+
+typography:
+  font_weight: "300"      # Lighter for emotional
+  letter_spacing: "0.03em"
+  line_height: "1.6"
+  text_transform: "none"
+
+compatibility:
+  - "typewriter"
+  - "railway"
+  - "scroll"
+
+features:
+  emotional_expression: true
+  warmth_conveying: true
+  energy_high: true
+  creativity_inspiring: true
+
+target_audience:
+  - "storytellers"
+  - "creative_writers"
+  - "emotional_content"
+  - "artistic_expression"
+
+use_cases:
+  - "narrative_content"
+  - "personal_stories"
+  - "creative_writing"
+  - "emotional_speeches"

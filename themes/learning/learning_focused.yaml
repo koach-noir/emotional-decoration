@@ -1,0 +1,50 @@
+name: "Learning Focused"
+description: "Blue-green gradient theme optimized for educational content with enhanced focus and readability"
+category: "learning"
+difficulty_target: "medium"
+
+colors:
+  primary_start: "#4A90E2"  # Professional blue
+  primary_end: "#7ED321"    # Growth green
+  background_start: "#000428"  # Deep night blue
+  background_end: "#004e92"    # Ocean blue
+  accent_color: "#50E3C2"      # Mint accent
+  glow_color: "#4A90E2"        # Primary blue glow
+
+effects:
+  glow_intensity: 0.3
+  animation_speed: 0.8    # Slower for learning
+  blur_radius: 0.5
+  pulse_enabled: false    # No distraction
+  gradient_angle: 45
+  shadow_enabled: true
+  shadow_intensity: 0.4
+
+typography:
+  font_weight: "500"
+  letter_spacing: "0.02em"  # Better readability
+  line_height: "1.8"        # Comfortable reading
+  text_transform: "none"
+
+compatibility:
+  - "typewriter"
+  - "railway" 
+  - "scroll"
+
+features:
+  focus_enhancement: true
+  readability_optimized: true
+  distraction_minimal: true
+  eye_strain_reduction: true
+
+target_audience:
+  - "students"
+  - "educators" 
+  - "training_materials"
+  - "documentation"
+
+use_cases:
+  - "educational_videos"
+  - "tutorial_content"
+  - "study_materials" 
+  - "instructional_text"
