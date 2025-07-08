@@ -2,7 +2,7 @@
 
 # Dynamic Full Demo Script for emotional-decoration
 # CSSファイル配置のみでScrollCastと統合
-# Usage: ./test/dynamic_full_demo.sh [input_file]
+# Usage: ./test/demo_all_config.sh [input_file]
 
 # デフォルト値（ScrollCastと同じディレクトリ構造）
 INPUT_FILE=${1:-"../sample_eng.txt"}
@@ -101,8 +101,8 @@ echo "🔍 ScrollCast統一セレクター使用確認..."
 html_files_found=0
 selector_compatible_files=0
 
-if [ -d "$OUTPUT_DIR/html" ]; then
-    for html_file in "$OUTPUT_DIR/html"/demo_*railway*.html "$OUTPUT_DIR/html"/demo_*simple_role*.html; do
+if [ -d "$OUTPUT_DIR/web" ]; then
+    for html_file in "$OUTPUT_DIR/web"/demo_*railway*.html "$OUTPUT_DIR/web"/demo_*simple_role*.html; do
         if [ -f "$html_file" ]; then
             ((html_files_found++))
             
@@ -135,8 +135,8 @@ if [ -d "$OUTPUT_DIR/html" ]; then
         fi
     done
 else
-    echo "   ❌ Error: $OUTPUT_DIR/html/ ディレクトリが見つかりません"
-    echo "   まずScrollCastのdynamic_full_demo.shを実行してください"
+    echo "   ❌ Error: $OUTPUT_DIR/web/ ディレクトリが見つかりません"
+    echo "   まずScrollCastのdemo_all_config.shを実行してください"
     exit 1
 fi
 
@@ -153,8 +153,8 @@ demo_file="$OUTPUT_DIR/demo/css-integration-demo.html"
 mkdir -p "$OUTPUT_DIR/demo"
 
 # サンプルHTMLファイルを選択（railway と scroll から1つずつ）
-sample_railway=$(find "$OUTPUT_DIR/html" -name "demo_*railway*.html" | head -n 1)
-sample_scroll=$(find "$OUTPUT_DIR/html" -name "demo_*simple_role*.html" | head -n 1)
+sample_railway=$(find "$OUTPUT_DIR/web" -name "demo_*railway*.html" | head -n 1)
+sample_scroll=$(find "$OUTPUT_DIR/web" -name "demo_*simple_role*.html" | head -n 1)
 
 cat > "$demo_file" << 'EOF'
 <!DOCTYPE html>
